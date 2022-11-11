@@ -1,3 +1,6 @@
+import random
+from random import randint
+
 from fastapi import FastAPI, Query
 from pydantic import BaseModel
 
@@ -5,6 +8,10 @@ tags_metadata = [
     {
         "name": "book",
         "description": "Operations with books. You can list them or add books."
+    },
+    {
+        "name": "random book",
+        "description": "Request a random book to read."
     }
 ]
 
@@ -37,12 +44,13 @@ book_start = {
 
 books = {0: book_start}
 
-
+#get a list of all the books
 @app.get("/books", tags=["book"])
 async def get_books():
     return books
 
 
+#return a specific book from the list
 @app.get("/book/{id}", tags=["book"])
 async def get_book(book_id: int | None = Query(
     default=None,
@@ -54,6 +62,14 @@ async def get_book(book_id: int | None = Query(
         return {"error": "This book was not found."}
 
 
+#pick a random book from the list
+@app.get("/randombook", tags=["random book"])
+async def get_random_book():
+    choice = random.choice(list(books.keys()))
+    return books[choice]
+
+
+#add a book to the list
 @app.post("/books", response_model=Book, tags=["book"])
 async def create_book(book: Book):
     key = max(books, key=books.get) + 1
