@@ -45,6 +45,7 @@ async def get_books():
 
 @app.get("/book/{id}", tags=["book"])
 async def get_book(book_id: int | None = Query(
+    default=None,
     description="The id of the book you would like to display information for."
 )):
     if book_id in books:
