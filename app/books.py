@@ -2,7 +2,9 @@ import random
 from random import randint
 
 from fastapi import FastAPI, Query
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+
 
 tags_metadata = [
     {
@@ -24,6 +26,22 @@ app = FastAPI(
         "email": "r0889345@student.thomasmore.be"
     }
 )
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 
 class Book(BaseModel):
