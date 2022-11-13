@@ -51,7 +51,7 @@ async def get_books():
 
 
 #return a specific book from the list
-@app.get("/book/{id}", tags=["book"])
+@app.get("/book/{book_id}", tags=["book"])
 async def get_book(book_id: int | None = Query(
     default=None,
     description="The id of the book you would like to display information for."
