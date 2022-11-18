@@ -52,6 +52,7 @@ class Book(BaseModel):
     page_count: int
     publisher: str
     format: str
+    ISBN: str
 
 
 book_start = {
@@ -59,7 +60,8 @@ book_start = {
     "author": "Sarah J Maas",
     "page_count": 644,
     "publisher": "Bloomsbury",
-    "format": "hardback"
+    "format": "hardback",
+    "ISBN": "1681195771"
 }
 
 books = {0: book_start}
