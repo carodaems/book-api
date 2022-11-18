@@ -19,7 +19,7 @@ tags_metadata = [
     },
     {
         "name": "display",
-        "description": "Retrieval of information used for display purposes."
+        "description": "Retrieval of information used for display purposes. This makes use of an external Google Books API"
     }
 ]
 
@@ -72,13 +72,15 @@ book_start = {
 
 books = {0: book_start}
 
-#get a list of all the books
+# get a list of all the books
+
+
 @app.get("/books", tags=["book"])
 async def get_books():
     return books
 
 
-#return a specific book from the list
+# return a specific book from the list
 @app.get("/book/{book_id}", tags=["book"])
 async def get_book(book_id: int | None = Query(
     default=None,
@@ -90,14 +92,14 @@ async def get_book(book_id: int | None = Query(
         return {"error": "This book was not found."}
 
 
-#pick a random book from the list
+# pick a random book from the list
 @app.get("/randombook", tags=["random book"])
 async def get_random_book():
     choice = random.choice(list(books.keys()))
     return books[choice]
 
 
-#get the cover from an ISBN
+# get the cover from an ISBN
 @app.get("/{ISBN}", tags=["display"])
 async def get_cover(ISBN: str | None = Query(
     default=None,
@@ -108,10 +110,9 @@ async def get_cover(ISBN: str | None = Query(
     obj = json.loads(response.text)
     cover_link = obj['items'][0]['volumeInfo']['imageLinks']['thumbnail']
     return cover_link
-     
 
 
-#add a book to the list
+# add a book to the list
 @app.post("/books", response_model=Book, tags=["book"])
 async def create_book(book: Book):
     key = max(books, key=books.get) + 1
