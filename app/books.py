@@ -16,6 +16,10 @@ tags_metadata = [
     {
         "name": "random book",
         "description": "Request a random book to read."
+    },
+    {
+        "name": "display",
+        "description": "Retrieval of information used for display purposes."
     }
 ]
 
@@ -94,8 +98,11 @@ async def get_random_book():
 
 
 #get the cover from an ISBN
-@app.get("/{ISBN}")
-async def get_cover(ISBN: str):
+@app.get("/{ISBN}", tags=["display"])
+async def get_cover(ISBN: str | None = Query(
+    default=None,
+    description="The ISBN of the book a cover needs to be retreived for."
+)):
     URL = "https://www.googleapis.com/books/v1/volumes?q=isbn:{0}".format(ISBN)
     response = requests.get(URL)
     obj = json.loads(response.text)
