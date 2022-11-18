@@ -1,5 +1,7 @@
 import random
 from random import randint
+import requests
+import json
 
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -89,6 +91,17 @@ async def get_book(book_id: int | None = Query(
 async def get_random_book():
     choice = random.choice(list(books.keys()))
     return books[choice]
+
+
+#get the cover from an ISBN
+@app.get("/{ISBN}")
+async def get_cover(ISBN: str):
+    URL = "https://www.googleapis.com/books/v1/volumes?q=isbn:{0}".format(ISBN)
+    response = requests.get(URL)
+    obj = json.loads(response.text)
+    cover_link = obj['items'][0]['volumeInfo']['imageLinks']['thumbnail']
+    return cover_link
+     
 
 
 #add a book to the list
