@@ -125,6 +125,6 @@ async def get_cover(ISBN: str | None = Query(
 # add a book to the list
 @app.post("/books", response_model=Book, tags=["book"])
 async def create_book(book: Book):
-    key = max(books, key=books.get) + 1
+    key = len(books)
     books[key] = book
     return books[key]
