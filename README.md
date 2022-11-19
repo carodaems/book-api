@@ -6,15 +6,15 @@ Boeken zijn een belangrijk deel van mijn leven, daarom besloot ik ze als thema t
 
 ## API
 
-**get_books** stuurt een lijst van alle boeken terug die opgeslagen zijn in de API.
+- **get_books** stuurt een lijst van alle boeken terug die opgeslagen zijn in de API.
 
-**get_book** stuurt aan de hand van een book_id de details terug van een specifiek boek uit de lijst.
+- **get_book** stuurt aan de hand van een book_id de details terug van een specifiek boek uit de lijst.
 
-**get_random** boek stuurt een willekeurig boek terug dat is opgeslagen in de API.
+- **get_random** boek stuurt een willekeurig boek terug dat is opgeslagen in de API.
 
-**get_cover** spreekt de Google Book API aan met behulp van een get request, die met een opgegeven ISBN nummer de link naar de cover van het boek terugstuurt. Deze request wordt enkel gebruikt om deze weer te geven op de frontend.
+- **get_cover** spreekt de Google Book API aan met behulp van een get request, die met een opgegeven ISBN nummer de link naar de cover van het boek terugstuurt. Deze request wordt enkel gebruikt om deze weer te geven op de frontend.
 
-**create_book** voegt een nieuw boek toe aan de API, de body van deze request moet overeenkomen met het Pydantic Model dat hiervoor voorzien is. 
+- **create_book** voegt een nieuw boek toe aan de API, de body van deze request moet overeenkomen met het Pydantic Model dat hiervoor voorzien is. 
 
 ## Frontend
 
