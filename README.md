@@ -24,6 +24,8 @@ Het is ook mogelijk om op een knop te drukken en een random boek uit de lijst te
 
 Ten slotte kan je via een form ook een boek toevoegen aan de lijst.
 
+Ik heb styling toegevoegd aan de pagina met behulp van Tailwind CSS. Ik wou deze framework in mijn vrije tijd graag leren gebruiken, maar deze opdracht bleek hiervoor de perfecte opportuniteit te zijn.
+
 ## OpenAPI Docs
 
 ![randomizer-service-carodaems cloud okteto net_docs](https://user-images.githubusercontent.com/91262442/202868533-6161719b-1281-480a-9a77-319e9c5ef267.png)
