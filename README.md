@@ -18,7 +18,7 @@ Boeken zijn een belangrijk deel van mijn leven, daarom besloot ik ze als thema t
 
 ## Frontend
 
-Op de frontend is het mogelijk gebruik te maken van 2 GET requests en 1 post request. Met behulp van een searchbar is het mogelijk om aan de hand van een Book ID de eigenschappen van een bijhorend boek op te vragen.
+Op de frontend is het mogelijk gebruik te maken van 2 GET requests en 1 POST request. Met behulp van een searchbar is het mogelijk om aan de hand van een Book ID de eigenschappen van een bijhorend boek op te vragen.
 
 Het is ook mogelijk om op een knop te drukken en een random boek uit de lijst te verkrijgen. 
 
