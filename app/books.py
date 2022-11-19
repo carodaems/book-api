@@ -61,16 +61,26 @@ class Book(BaseModel):
     ISBN: str
 
 
-book_start = {
-    "title": "Tower of Dawn",
-    "author": "Sarah J Maas",
-    "page_count": 644,
-    "publisher": "Bloomsbury",
-    "format": "hardback",
-    "ISBN": "1681195771"
+books = {
+    0: {
+        "title": "Tower of Dawn",
+        "author": "Sarah J Maas",
+        "page_count": 644,
+        "publisher": "Bloomsbury",
+        "format": "hardback",
+        "ISBN": "1681195771"
+    },
+    1: {
+        "title": "Empire of Storms",
+        "author": "Sarah J Maas",
+        "page_count": 704,
+        "publisher": "Bloomsbury",
+        "format": "hardback",
+        "ISBN": "1619636093"
+    }
 }
 
-books = {0: book_start}
+#books = {0: book_start}
 
 # get a list of all the books
 
@@ -84,7 +94,7 @@ async def get_books():
 @app.get("/book/{book_id}", tags=["book"])
 async def get_book(book_id: int | None = Query(
     default=None,
-    description="The id of the book you would like to display information for."
+    description="The id of the book you would like to display information for.",
 )):
     if book_id in books:
         return books[book_id]
@@ -103,7 +113,7 @@ async def get_random_book():
 @app.get("/{ISBN}", tags=["display"])
 async def get_cover(ISBN: str | None = Query(
     default=None,
-    description="The ISBN of the book a cover needs to be retreived for."
+    description="The ISBN of the book a cover needs to be retreived for.",
 )):
     URL = "https://www.googleapis.com/books/v1/volumes?q=isbn:{0}".format(ISBN)
     response = requests.get(URL)
